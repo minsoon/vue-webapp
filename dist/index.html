@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no"><title>webAppProject</title><link href=//fonts.googleapis.com/earlyaccess/nanumgothic.css rel=stylesheet type=text/css><link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel=stylesheet><script>// IOS 10.2.1 BUG FIXED
+      Object.values = (obj) => Object.keys(obj).map(key => obj[key]);
+      // ["string","number"].includes is not a function BUG FIXED
+      /* eslint no-extend-native: ["error", { "exceptions": ["Array"] }] */
+      if (!Array.prototype.includes) {
+        Object.defineProperty(Array.prototype, 'includes', {
+          value: function (searchElement, fromIndex) {
+            if (this == null) {
+              throw new TypeError('"this" is null or not defined');
+            }
+
+            // 1. Let O be ? ToObject(this value).
+            var o = Object(this);
+
+            // 2. Let len be ? ToLength(? Get(O, "length")).
+            var len = o.length >>> 0;
+
+            // 3. If len is 0, return false.
+            if (len === 0) {
+              return false;
+            }
+
+            // 4. Let n be ? ToInteger(fromIndex).
+            //    (If fromIndex is undefined, this step produces the value 0.)
+            var n = fromIndex | 0;
+
+            // 5. If n ≥ 0, then
+            //  a. Let k be n.
+            // 6. Else n < 0,
+            //  a. Let k be len + n.
+            //  b. If k < 0, let k be 0.
+            var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+            function sameValueZero (x, y) {
+              return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
+            }
+
+            // 7. Repeat, while k < len
+            while (k < len) {
+              // a. Let elementK be the result of ? Get(O, ! ToString(k)).
+              // b. If SameValueZero(searchElement, elementK) is true, return true.
+              if (sameValueZero(o[k], searchElement)) {
+                return true;
+              }
+              // c. Increase k by 1.
+              k++;
+            }
+
+            // 8. Return false
+            return false;
+          }
+        });
+      }</script><link href=/static/css/app.159523ac7a33a386260ef6cb439be42a.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.69f037128e3b4f6604f8.js></script><script type=text/javascript src=/static/js/vendor.6d47f86c8f9f39397697.js></script><script type=text/javascript src=/static/js/app.57dd7daefee4bd2740c9.js></script></body></html>

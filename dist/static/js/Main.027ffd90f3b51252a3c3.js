@@ -1,0 +1,2 @@
+webpackJsonp([0],{"91zc":function(n,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var a={render:function(){var n=this.$createElement;return(this._self._c||n)("div",{staticClass:"mainCon"},[this._v("\n  Main\n")])},staticRenderFns:[]};var i=t("VU/8")({name:"Main",data:function(){return{}},created:function(){},methods:{}},a,!1,function(n){t("QUaT")},null,null);e.default=i.exports},QUaT:function(n,e){}});
+//# sourceMappingURL=Main.027ffd90f3b51252a3c3.js.map

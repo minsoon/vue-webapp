@@ -1,0 +1,28 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["> 0.25%", "not ie <= 11"]
+      }
+    }],
+    "stage-2"
+  ],
+  "plugins": [
+    ["transform-imports", {
+      "vuetify": {
+        "transform": "vuetify/es5/components/${member}",
+        "preventFullImport": true
+      }
+    }],
+    "transform-vue-jsx",
+    "transform-runtime",
+    "syntax-dynamic-import"
+  ],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-2"],
+      "plugins": ["transform-vue-jsx", "istanbul"]
+    }
+  }
+}
