@@ -16,7 +16,7 @@ $ npm run dev
 $ npm run build
 ```
 
-### 주요페키지 버전
+### 주요 패키지 버전
 ```bash
 "vue": "^2.5.17"
 "vue-router": "^3.0.1"
@@ -28,5 +28,6 @@ $ npm run build
 ---
 
 ## TODOLIST
+- README.md 가이드 정리
 - Package.json 정리
 - vuetify 버전 업데이트 1.5.x -> 2.x
