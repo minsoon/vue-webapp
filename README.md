@@ -28,6 +28,8 @@ $ npm run build
 ---
 
 ## TODOLIST
+~~- vuetify 버전 업데이트 1.5.x -> 2.x~~
+- SCSS Golbal 버그 수정
 - README.md 가이드 정리
 - Package.json 정리
-- vuetify 버전 업데이트 1.5.x -> 2.x
+
