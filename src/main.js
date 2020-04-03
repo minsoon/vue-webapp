@@ -10,11 +10,10 @@ import http from './http';
 import App from './App.vue';
 import vueMoment from 'vue-moment';
 import vuetify from '@/plugins/vuetify';
+import Dexie from 'dexie';
 import './assets/styles/common.sass';
 
 Vue.config.productionTip = false;
-
-window.$cookie = VueCookie;
 
 Vue.use(VueCookie);
 Vue.use(vueMoment);
@@ -28,7 +27,13 @@ Object.defineProperties(Vue.prototype, {
   }
 });
 
+window.$cookie = VueCookie;
+
 Vue.prototype.$http = http;
+
+if (window.indexedDB) {
+  Vue.prototype.$db = new Dexie('Database');
+}
 
 /* eslint-disable no-new */
 new Vue({
