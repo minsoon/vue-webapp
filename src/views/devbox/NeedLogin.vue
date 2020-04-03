@@ -1,41 +1,9 @@
 <template>
-  <div class="viewBox" v-gz-gnb-info="{title: title}">
-    {{ title }}
-    <div style="padding: 15px"  v-if="!isLogin">
-      <v-form v-model="valid">
-        <v-text-field
-                v-model="id"
-                :rules="idRules"
-                label="id"
-                required
-        ></v-text-field>
-        <v-text-field
-                v-model="pwd"
-                :rules="pwdRules"
-                label="password"
-                :type="'password'"
-                required
-        ></v-text-field>
-        <v-btn @click="login()">Log in</v-btn>
-      </v-form>
-    </div>
-    <div style="padding: 15px" v-else>
-      <p>Already Logged</p>
-      <v-btn @click="logout()">Log out</v-btn>
-    </div>
-  </div>
 </template>
 
 <script>
-import * as VForm from 'vuetify/es5/components/VForm';
-import * as VTextField from 'vuetify/es5/components/VTextField';
-
 export default {
   name: 'NeedLogin',
-  components: {
-    ...VForm,
-    ...VTextField
-  },
   data () {
     return {
       title: 'NeedLogin',

@@ -1,8 +1,5 @@
 <template>
   <v-app id="wrap" v-cloak>
-    <!-- @slot Use this slot header -->
-    <app-header />
-    <!-- @slot Use this slot content -->
     <div class="container">
       <router-view/>
     </div>
@@ -11,27 +8,21 @@
       <div class="back"></div>
       <v-progress-circular indeterminate :size="40" :width="2" color="white"></v-progress-circular>
     </div>
-    <div class="errorPopupCon">
-      <v-dialog persistent v-model="errorPopup">
-        <div class="confirmCon">
-          <div class="txtPopupBox" :class="errorData.iconClass" v-html="errorData.template"></div>
-          <div class="btnBox oneBtn">
-            {{ errorData.btnText }}
-          </div>
+    <v-dialog persistent v-model="errorPopup">
+      <div class="confirmCon">
+        <div class="txtPopupBox" :class="errorData.iconClass" v-html="errorData.template"></div>
+        <div class="btnBox oneBtn">
+          {{ errorData.btnText }}
         </div>
-      </v-dialog>
-    </div>
+      </div>
+    </v-dialog>
 
   </v-app>
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader';
 export default {
   name: 'App',
-  components: {
-    AppHeader,
-  },
   data() {
     return {
       isLoading: false,
@@ -49,18 +40,22 @@ export default {
       }
     }
   },
+  watch: {
+    errorPopup(val) {
+      if (!val) {
+        this.errorData.btnCallback = () => {
+          setTimeout(() => {
+            this.errorPopup = false;
+          }, 150);
+          this.$eventBus.$emit('loading', false);
+        }
+      }
+    }
+  },
   created () {
-   /**
-   * eventBus를 통해 FullLoading OnOff
-   * on  : this.$eventBus.$emit('loading', ture);
-   * off : this.$eventBus.$emit('loading', false);
-   * */
     this.$eventBus.$on('loading', key => {
       this.isLoading = key;
     });
-    /**
-     *  에러에 대한 메시지는 EventBus를 통해 노출
-     * */
     this.$eventBus.$on('errorPopup:open', data => {
       this.errorData.template = data.template;
       this.errorData.iconClass = data.iconClass ? data.iconClass : 'errorIcon';
