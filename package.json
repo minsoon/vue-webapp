@@ -25,7 +25,7 @@
   "homepage": "",
   "dependencies": {
     "axios": "^0.18.0",
-    "dexie": "^2.0.4",
+    "dexie": "^3.2.2",
     "raven-js": "^3.27.1",
     "routes": "^2.1.0",
     "test-utils": "^1.1.1",
